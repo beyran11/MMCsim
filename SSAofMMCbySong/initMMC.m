@@ -64,6 +64,11 @@ dUph1 = -sqrt(2)*M*N*Ia*sin(phi)/(8*w1*Cd) + M^2*N*Iaz*sin(Theta)/(8*w1*Cd) - ..
 dUph2 = sqrt(2)*M*N*Iad*sin(2*w1*t+phi)/(16*w1*Cd) - N*Iaz*cos(2*w1*t+Theta)/(4*w1*Cd) ;
 dUph3 = -M^2*N*Iaz*cos(2*w1*t+Theta)/(24*w1*Cd) + M^2* N*Iaz*cos(4*w1*t+Theta)/(24*w1*Cd) ;
 
+%% Switching Funvtion
+Sap_avg = 1/2 - 1/2*M*sin(w1*t) ;
+San_avg = 1/2 + 1/2*M*sin(w1*t) ;
+
+
 % plot(t,iCPdc*ones(1,length(t)))
 hold on
 % % plot(t,iCPh1)
@@ -75,6 +80,9 @@ hold on
 % plot(t,iAP)
 % plot(t,iAN)
 
-plot(t,dUph1)
-plot(t,dUph2)
-plot(t,dUph3)
+% plot(t,dUph1)
+% plot(t,dUph2)
+% plot(t,dUph3)
+
+plot(t,Sap_avg)
+plot(t,San_avg)
