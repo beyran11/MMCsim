@@ -4,16 +4,16 @@ clear all
 close all
 
 global nH 
-nH = 50 ;
+nH = 3 ;
 
 D = 0.5 ;
-Vin = 0.85 ;
+Vin = 0.5 ;
 
 T = 2*pi;
 Fs = 2;
 dt = 1/(1000*Fs);
 
-t = 0:dt:2*T-dt ;
+t = 0:dt:T-dt ;
 
 
 a0out = D*Vin ;
@@ -57,7 +57,7 @@ plot(t,v_SW,'k','linewidth',2)
 % ylim([-10 110])
 xlabel('time [s]')
 ylabel('v_M(t) and i(t)')
-
+title(['n=',num2str(nH),',  D=',num2str(D)])
 fun = @DprimCalc;
 
 x0 = D ;
@@ -65,15 +65,12 @@ Dp= fsolve(fun,x0)
 
 
 
-Nsw = 10 ;
-for k = 1:Nsw
-    x = (sawtooth(2*pi*Fs*t,0.5)+1)/2/Nsw+(k-1)/Nsw;
+Nm = 10 ;
+for k = 1:Nm
+    x = (sawtooth(2*pi*Fs*t,0.5)+1)/2/Nm+(k-1)/Nm;
     plot(t,x)
 end
 
 box on
 
-xlabel('time (s)')
-ylabel('Vref')
-title(['Level-Shift Modulation, n=',num2str(nH),', D=',num2str(D),...
-    ', N_{sw}=',num2str(Nsw),', f_{sw}=',num2str(Fs)])
+xlabel

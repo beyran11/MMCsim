@@ -1,0 +1,25 @@
+% function Harm2
+clc
+clear all
+close all
+
+global nH
+
+Dvec = [0.1:0.05:0.9] ;
+fun = @DprimCalc;
+
+for j = 1:1000
+    nH = j ;
+    Dp = 0 ;
+    for i = 1:length(Dvec)
+        
+        x0 = Dvec(i) ;
+        Dp = fsolve(fun,x0) ;
+        Dpvec(j,i) = Dp ;
+    end
+    
+end
+plot(Dvec,Dpvec)
+
+xlabel('D')
+ylabel('D^'
