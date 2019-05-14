@@ -8,7 +8,9 @@ global nH
 Dvec = [0.1:0.05:0.9] ;
 fun = @DprimCalc;
 
-for j = 1:1000
+clm = colormap(jet(1000)) ;
+
+for j = 4:4
     nH = j ;
     Deq = 0 ;
     for i = 1:length(Dvec)
@@ -17,9 +19,10 @@ for j = 1:1000
         Deq = fsolve(fun,x0) ;
         Deqvec(j,i) = Deq ;
     end
-    
+    plot(Dvec,Deqvec(j,:),'-o','MarkerSize',3,'MarkerEdgeColor',clm(j,:),'MarkerFaceColor',clm(j,:)) ;
+    hold on
 end
-plot(Dvec,Deqvec)
+
 
 xlabel('D')
 ylabel('D_{eq}')

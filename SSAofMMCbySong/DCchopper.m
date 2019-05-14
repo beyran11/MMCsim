@@ -25,4 +25,10 @@ xlim([1 50])
 ylim([0.0 0.26])
 
 xlabel('Harmonic Order')
-ylabel('Sequence Value')
+ylabel('D(1-D)')
+
+1+1
+
+
+
+
